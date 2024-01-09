@@ -1,0 +1,97 @@
+[
+  {
+    "line": 1,
+    "elements": [
+      {
+        "line": 49,
+        "name": "User register new account and checks blank field errors and alert messages",
+        "description": "",
+        "id": "logging-in-to-the-system;user-register-new-account-and-checks-blank-field-errors-and-alert-messages",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 14863562500,
+              "status": "passed"
+            },
+            "line": 50,
+            "name": "user navigates \"My Account\" page and selects \"Register\" tab",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"My Account\"",
+                  "offset": 15
+                },
+                {
+                  "val": "\"Register\"",
+                  "offset": 45
+                }
+              ],
+              "location": "CommonStepDefs.userNavigatesPage(String,String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "error_message": "org.junit.ComparisonFailure: expected:\u003c[First Name must be between 1 and 32 characters!]\u003e but was:\u003c[]\u003e\r\n\tat org.junit.Assert.assertEquals(Assert.java:117)\r\n\tat org.junit.Assert.assertEquals(Assert.java:146)\r\n\tat com.getir.pages.LoginPage.checksBlankFieldErrors(LoginPage.java:91)\r\n\tat com.getir.stepdefs.LoginStepDefs.userChecksBlankFieldErrors(LoginStepDefs.java:34)\r\n\tat ✽.user checks blank field errors(src\\test\\resources\\features\\login.feature:51)\r\n",
+              "duration": 1389379900,
+              "status": "failed"
+            },
+            "line": 51,
+            "name": "user checks blank field errors",
+            "match": {
+              "location": "LoginStepDefs.userChecksBlankFieldErrors()"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 13500,
+              "status": "skipped"
+            },
+            "line": 52,
+            "name": "user fills register account fields",
+            "match": {
+              "location": "LoginStepDefs.userFillsRegisterAccountFields()"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 8100,
+              "status": "skipped"
+            },
+            "line": 53,
+            "name": "user navigates \"My Account\" page and selects \"Logout\" tab",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"My Account\"",
+                  "offset": 15
+                },
+                {
+                  "val": "\"Logout\"",
+                  "offset": 45
+                }
+              ],
+              "location": "CommonStepDefs.userNavigatesPage(String,String)"
+            },
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@user_register_new_account_check_warnings"
+          }
+        ]
+      }
+    ],
+    "name": "Logging in to the system",
+    "description": "",
+    "id": "logging-in-to-the-system",
+    "keyword": "Feature",
+    "uri": "src\\test\\resources\\features\\login.feature",
+    "tags": []
+  }
+]
