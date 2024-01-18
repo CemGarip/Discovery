@@ -38,7 +38,7 @@ public class Driver {
 					driver = new ChromeDriver(options);
 					logger.info("Created Chrome driver with the following options: " + options.asMap());
 					logger.info("Browser size is " + driver.manage().window().getSize());
-					driver.get("http://demo.opencart.com");
+					driver.get("https://web-workspace.develop.getirapi.com/yemek/");
 					break;
 				case "chromeHeadless":
 					WebDriverManager.chromedriver().setup();
