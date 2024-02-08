@@ -14,8 +14,8 @@ public abstract class BasePage {
 
 	public static final Logger logger = LogManager.getLogger();
 	public final Pages pages = new Pages();
-	@FindBy(xpath = "//div[@id='content']//li/a[text()='Edit your account information']")
-	public WebElement txt_WelcomeMessage_Header;
+	@FindBy(xpath = "//span[text()='Profil']")
+	public WebElement txt_SuccessfulLoginProfile_DashboardPage;
 
 	public static String randomString(int stringLength){
 

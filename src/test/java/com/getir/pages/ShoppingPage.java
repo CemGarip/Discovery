@@ -155,7 +155,7 @@ public class ShoppingPage extends BasePage {
         HtmlManipulator.clickOnButton("Submit");
         HtmlManipulator.clickOnButton("Continue");
         //Return Homepage check
-        WaitUtils.waitUntilCondition(() -> pages.loginPage().img_OpenCartLogo_LoginPage.isDisplayed());
+        WaitUtils.waitUntilCondition(() -> pages.loginPage().img_GetirYemek_LoginPage.isDisplayed());
         logger.info("Return product form filled.");
     }
     public void sortByList(String sortOption) {

@@ -29,7 +29,7 @@ public class HeaderPage extends BasePage {
 		logger.info("Navigated To " + subTabName +" and "+option+" tab");
 	}
 	public void logOut(){
-		pages.loginPage().txt_MyAccount_TopText.click();
+		pages.loginPage().txt_SuccessfulLoginProfile_DashboardPage.click();
 		pages.loginPage().txt_Logout_TopText.click();
 		logger.info("User logs out");
 	}

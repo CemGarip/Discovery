@@ -17,20 +17,22 @@ public class LoginPage extends BasePage {
 	public static User user;
 	Faker faker = new Faker();
 	Pages pages = new Pages();
-	@FindBy(css = "a img[alt=\"iPhone 6\"]")
-	public WebElement img_OpenCartLogo_LoginPage;
-	@FindBy(xpath = "//span[text()='My Account']")
-	public WebElement txt_MyAccount_TopText;
-	@FindBy(xpath = "//a[text()='Login']")
-	public WebElement txt_Login_TopText;
-	@FindBy(xpath = "//a[text()='Logout']")
+	@FindBy(xpath = "//div/a[@href='/yemek/']")
+	public WebElement img_GetirYemek_LoginPage;
+	@FindBy(xpath = "//input[@type='tel']")
+	public WebElement input_TelephoneLogin_LoginPage;
+
+	@FindBy(xpath = "//button[@aria-label='logout button']")
 	public WebElement txt_Logout_TopText;
 	@FindBy(xpath = "//label[text()='E-Mail Address']/..//input")
 	public WebElement input_EmailAdress;
-	@FindBy(xpath = "//label[text()='Password']/..//input")
-	public WebElement input_Password;
-	@FindBy(xpath = "//button[text()='Login']")
-	public WebElement button_Login;
+
+	@FindBy(xpath = "//button[@type='submit']")
+	public WebElement button_SubmitTelephone_LoginPage;
+	@FindBy(xpath = "//input[@aria-label='input code']")
+	public WebElement input_ActivationCode_LoginPage;
+	@FindBy(xpath = "//button[text()='Onayla ve giriş yap']")
+	public WebElement button_ActivationCodeButton_LoginPage;
 	@FindBy(xpath = "//label[@for='input-password']/../a[text()='Forgotten Password']")
 	public WebElement txt_Forgotten_Password_LoginPage;
 	@FindBy(css = "#error-firstname")
@@ -45,7 +47,7 @@ public class LoginPage extends BasePage {
 	public WebElement cb_Privacy_Policy_RegisterPage;
 
 	public void waitForLogo(){
-		WaitUtils.waitUntilCondition(() -> img_OpenCartLogo_LoginPage.isDisplayed());
+		WaitUtils.waitUntilCondition(() -> img_GetirYemek_LoginPage.isDisplayed());
 	}
 
 	public LoginPage(){
@@ -57,19 +59,18 @@ public class LoginPage extends BasePage {
 		logger.info("Homepage image is visible.");
 
 		LoginPage.user = user;
-		WaitUtils.waitElementInteractableWithClicking(txt_MyAccount_TopText);
-		WaitUtils.waitElementInteractableWithClicking(txt_Login_TopText);
-		WaitUtils.waitElementInteractableWithSendKeys(input_EmailAdress).sendKeys(user.email);
-
-		WaitUtils.waitElementInteractableWithSendKeys(input_Password).sendKeys(user.password);
-		WaitUtils.waitElementInteractableWithClicking(button_Login);
+		WaitUtils.waitElementInteractableWithSendKeys(input_TelephoneLogin_LoginPage).sendKeys(user.telephone);
+		WaitUtils.waitElementInteractableWithClicking(button_SubmitTelephone_LoginPage);
+		WaitUtils.waitElementInteractableWithSendKeys(input_ActivationCode_LoginPage).sendKeys(user.activationCode);
+		WaitUtils.waitElementInteractableWithClicking(button_ActivationCodeButton_LoginPage);
 
 		verifyUserIsLoggedIn(user);
 	}
 	private void verifyUserIsLoggedIn(User user){
-		WaitUtils.waitUntilCondition(() -> txt_WelcomeMessage_Header.isDisplayed());
-		HtmlManipulator.assertContains("Edit your account information", txt_WelcomeMessage_Header.getText());
-		logger.info("Log in as {} is success", user.keyword);
+		WaitUtils.waitFor(5);
+		WaitUtils.waitUntilCondition(() -> txt_SuccessfulLoginProfile_DashboardPage.isDisplayed());
+		HtmlManipulator.assertContains("Pro", txt_SuccessfulLoginProfile_DashboardPage.getText());
+		logger.info("Log in as {} is success", user.telephone);
 	}
 	public void clicksForgottenPasswordAndTryToChangePasswordWithInvalidEmail() {
 		WaitUtils.waitElementInteractableWithClicking(txt_Forgotten_Password_LoginPage);
@@ -80,8 +81,8 @@ public class LoginPage extends BasePage {
 	}
 	public void loginWithInvalidUser() {
 		WaitUtils.waitElementInteractableWithSendKeys(input_EmailAdress).sendKeys("invalid@gmail.com");
-		WaitUtils.waitElementInteractableWithSendKeys(input_Password).sendKeys("123123");
-		WaitUtils.waitElementInteractableWithClicking(button_Login);
+		WaitUtils.waitElementInteractableWithSendKeys(input_ActivationCode_LoginPage).sendKeys("123123");
+		WaitUtils.waitElementInteractableWithClicking(button_ActivationCodeButton_LoginPage);
 		logger.info("Invalid User error.");
 	}
 	public void checksBlankFieldErrors() {

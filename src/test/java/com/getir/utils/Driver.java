@@ -33,7 +33,7 @@ public class Driver {
 					options.addArguments("--start-maximized");
 					options.addArguments("--no-sandbox");
 					options.addArguments("--disable-dev-shm-usage");
-					options.addArguments("--headless");
+//					options.addArguments("--headless");
 					TestConfiguration.configureChromeOptions(options);
 					driver = new ChromeDriver(options);
 					logger.info("Created Chrome driver with the following options: " + options.asMap());

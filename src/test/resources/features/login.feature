@@ -3,18 +3,18 @@ Feature:Logging in to the system
   @user_shopping_with_log_in
   Scenario: User log in a created account Then add product to wishlist
     Given log in with user "GetirUser"
-    Then user hovers "Components" tab and selects "Monitors" option
-    Then user clicks "Samsung SyncMaster 941BW" product
-    Then user clicks "Add to Wish List" button from button group
-    Then user checks alert "Success: You have added Samsung SyncMaster 941BW to your wish list!" has message
-    Then user navigates "Wishlist" page and selects "-" tab
-    Then user clicks "Remove" button
-    Then user checks alert "Success: You have removed an item from your wishlist" has message
-    Then user hovers "Components" tab and selects "Monitors" option
-    Then user clicks "Samsung SyncMaster 941BW" product
-    Then user clicks "Add to Wish List" button from button group
-    Then user navigates "Wishlist" page and selects "-" tab
-    Then user navigates "My Account" page and selects "Logout" tab
+#    Then user hovers "Components" tab and selects "Monitors" option
+#    Then user clicks "Samsung SyncMaster 941BW" product
+#    Then user clicks "Add to Wish List" button from button group
+#    Then user checks alert "Success: You have added Samsung SyncMaster 941BW to your wish list!" has message
+#    Then user navigates "Wishlist" page and selects "-" tab
+#    Then user clicks "Remove" button
+#    Then user checks alert "Success: You have removed an item from your wishlist" has message
+#    Then user hovers "Components" tab and selects "Monitors" option
+#    Then user clicks "Samsung SyncMaster 941BW" product
+#    Then user clicks "Add to Wish List" button from button group
+#    Then user navigates "Wishlist" page and selects "-" tab
+#    Then user navigates "My Account" page and selects "Logout" tab
 
   @user_shopping_without_log_in
   Scenario: User log in without any account First user buy some product then register an account and check order history
